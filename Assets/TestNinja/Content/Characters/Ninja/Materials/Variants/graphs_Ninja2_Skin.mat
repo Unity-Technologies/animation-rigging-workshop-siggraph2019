@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: graphs_Ninja2_Skin
+  m_Shader: {fileID: 4800000, guid: 3ab7dd0b5fb9f574a94cf448201e7e26, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_356CCB86_Texture:
+        m_Texture: {fileID: 2800000, guid: b4545adf21a8cc5439c95807334e9a34, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_5004BEFF_Texture:
+        m_Texture: {fileID: 2800000, guid: fe86390306dbf8d49a6b34599f6e8aed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_55AF77A_Texture:
+        m_Texture: {fileID: 2800000, guid: c8d62f9aea861a248855d4adb65d2c76, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_6D44BA59_Texture:
+        m_Texture: {fileID: 2800000, guid: 03c39246d90bc4646b3793edf6b1d78a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_B30FC96B_Texture:
+        m_Texture: {fileID: 2800000, guid: 03c39246d90bc4646b3793edf6b1d78a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_D48507B2_Texture:
+        m_Texture: {fileID: 2800000, guid: 99f051344e3e9cd45a501779934e6163, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_D62BE4F7_Texture:
+        m_Texture: {fileID: 2800000, guid: fe86390306dbf8d49a6b34599f6e8aed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_149E4697: 0.54
+    - Vector1_45BCAEB7: 0.8
+    - Vector1_7B1315B7: 2
+    - Vector1_8B355316: 1.3
+    - Vector1_938C38A6: 0.36
+    - Vector1_9430777B: 0.56
+    - Vector1_B689B066: 0.36
+    - Vector1_D3584EF6: 1.3
+    m_Colors:
+    - Color_422C6F10: {r: 0.6037736, g: 0.27704066, b: 0.21929511, a: 1}
+    - Color_8777B784: {r: 0.745283, g: 0.48162156, b: 0.48162156, a: 1}
