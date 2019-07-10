@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
-using Unity.Collections;
 
 namespace UnityEngine.Animations.Rigging
 {
