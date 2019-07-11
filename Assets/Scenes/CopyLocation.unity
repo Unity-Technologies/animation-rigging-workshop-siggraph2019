@@ -533,7 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512901161}
   - component: {fileID: 1512901163}
-  - component: {fileID: 1512901162}
+  - component: {fileID: 1512901164}
   m_Layer: 0
   m_Name: LeftArm
   m_TagString: Untagged
@@ -556,25 +556,6 @@ Transform:
   m_Father: {fileID: 1219760734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1512901162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512901160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500a29b409189a5449ac7b3fe6d98a88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Weight: 1
-  m_Data:
-    constrainedObject: {fileID: 81240929}
-    sourceObject: {fileID: 965827090}
-    xInvert: 1
-    yInvert: 0
-    zInvert: 0
 --- !u!114 &1512901163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,6 +582,22 @@ MonoBehaviour:
     m_MaintainTargetRotationOffset: 0
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 0
+--- !u!114 &1512901164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512901160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bfd3261384fc9479894a4e72ffd52f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 1
+  m_Data:
+    constrainedObject: {fileID: 81240929}
+    sourceObject: {fileID: 965827090}
 --- !u!1 &1676387290
 GameObject:
   m_ObjectHideFlags: 0
