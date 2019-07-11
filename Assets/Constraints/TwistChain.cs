@@ -21,28 +21,21 @@ namespace UnityEngine.Animations.Rigging
 
         public void ProcessAnimation(AnimationStream stream)
         {
-            float w = jobWeight.Get(stream);
-            if (w > 0f)
-            {
-                // Retrieve root and tip rotation.
-                Quaternion rootRotation = rootTarget.GetRotation(stream);
-                Quaternion tipRotation = tipTarget.GetRotation(stream);
+            // Retrieve root and tip rotation.
+            Quaternion rootRotation = rootTarget.GetRotation(stream);
+            Quaternion tipRotation = tipTarget.GetRotation(stream);
 
-                // Interpolate rotation on chain.
-                for (int i = 0; i < chain.Length; ++i)
-                {
-                    chain[i].SetRotation(stream, Quaternion.Lerp(chain[i].GetRotation(stream), Quaternion.Lerp(rootRotation, tipRotation, weights[i]), w));
-                }
+            float mainWeight = jobWeight.Get(stream);
 
-                // Update position of handles for easier
-                rootTarget.SetPosition(stream, chain[0].GetPosition(stream));
-                tipTarget.SetPosition(stream, chain[chain.Length - 1].GetPosition(stream));
-            }
-            else
+            // Interpolate rotation on chain.
+            for (int i = 0; i < chain.Length; ++i)
             {
-                for (int i = 0; i < chain.Length; ++i)
-                    AnimationRuntimeUtils.PassThrough(stream, chain[i]);
+                chain[i].SetRotation(stream, Quaternion.Lerp(chain[i].GetRotation(stream), Quaternion.Lerp(rootRotation, tipRotation, weights[i]), mainWeight));
             }
+
+            // Update position of tip handle for easier visualization.
+            rootTarget.SetPosition(stream, chain[0].GetPosition(stream));
+            tipTarget.SetPosition(stream, chain[chain.Length - 1].GetPosition(stream));
         }
     }
 
@@ -78,51 +71,29 @@ namespace UnityEngine.Animations.Rigging
         public override TwistChainJob Create(Animator animator, ref TwistChainData data, Component component)
         {
             // Retrieve chain in-between root and tip transforms.
-            List<Transform> chain = new List<Transform>();
-            Transform tmp = data.tip;
-            while (tmp != data.root)
-            {
-                chain.Add(tmp);
-                tmp = tmp.parent;
-            }
-            chain.Add(data.root);
-            chain.Reverse();
+            Transform[] chain = ConstraintsUtils.ExtractChain(data.root, data.tip);
 
             // Build Job.
             var job = new TwistChainJob();
-            job.chain = new NativeArray<ReadWriteTransformHandle>(chain.Count, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
-            job.steps = new NativeArray<float>(chain.Count, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
-            job.weights = new NativeArray<float>(chain.Count, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
+            job.chain = new NativeArray<ReadWriteTransformHandle>(chain.Length, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
+            job.steps = new NativeArray<float>(chain.Length, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
+            job.weights = new NativeArray<float>(chain.Length, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             job.rootTarget = ReadWriteTransformHandle.Bind(animator, data.rootTarget);
             job.tipTarget = ReadWriteTransformHandle.Bind(animator, data.tipTarget);
 
-            for (int i = 0; i < chain.Count; ++i)
+            for (int i = 0; i < chain.Length; ++i)
             {
                 job.chain[i] = ReadWriteTransformHandle.Bind(animator, chain[i]);
             }
 
-            // Extract lengths from chain.
-            float totalLength = 0f;
+            // Extract steps from chain.
+            float[] steps = ConstraintsUtils.ExtractSteps(chain);
 
-            float[] lengths = new float[chain.Count];
-            lengths[0] = 0f;
-
-            for (int i = 1; i < chain.Count; ++i)
+            // Update weights based on curve.
+            for (int i = 0; i < steps.Length; ++i)
             {
-                lengths[i] = chain[i].localPosition.magnitude;
-                totalLength += lengths[i];
-            }
-
-            // Evaluate weights and steps based on curve.
-            float cumulativeLength = 0.0f;
-            for (int i = 0; i < lengths.Length; ++i)
-            {
-                cumulativeLength += lengths[i];
-
-                float t = cumulativeLength / totalLength;
-
-                job.steps[i] = t;
-                job.weights[i] = Mathf.Clamp01(data.curve.Evaluate(t));
+                job.steps[i] = steps[i];
+                job.weights[i] = Mathf.Clamp01(data.curve.Evaluate(steps[i]));
             }
 
             return job;
@@ -138,7 +109,7 @@ namespace UnityEngine.Animations.Rigging
         public override void Update(TwistChainJob job, ref TwistChainData data)
         {
             // Update weights based on curve.
-            for (int i = 0; i < job.weights.Length; ++i)
+            for (int i = 0; i < job.steps.Length; ++i)
             {
                 job.weights[i] = Mathf.Clamp01(data.curve.Evaluate(job.steps[i]));
             }

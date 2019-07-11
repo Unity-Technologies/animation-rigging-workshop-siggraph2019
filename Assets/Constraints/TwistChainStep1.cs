@@ -50,6 +50,7 @@ namespace UnityEngine.Animations.Rigging
 
         void IAnimationJobData.SetDefaultValues()
         {
+            // Default values.
             root = null;
             tip = null;
 
@@ -63,15 +64,15 @@ namespace UnityEngine.Animations.Rigging
         public override TwistChainStep1Job Create(Animator animator, ref TwistChainStep1Data data, Component component)
         {
             // Retrieve chain in-between root and tip transforms.
-            List<Transform> chain = ConstraintsUtils.ExtractChain(data.root, data.tip);
+            Transform[] chain = ConstraintsUtils.ExtractChain(data.root, data.tip);
 
             // Build Job.
             var job = new TwistChainStep1Job();
-            job.chain = new NativeArray<ReadWriteTransformHandle>(chain.Count, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
+            job.chain = new NativeArray<ReadWriteTransformHandle>(chain.Length, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             job.rootTarget = ReadWriteTransformHandle.Bind(animator, data.rootTarget);
             job.tipTarget = ReadWriteTransformHandle.Bind(animator, data.tipTarget);
 
-            for (int i = 0; i < chain.Count; ++i)
+            for (int i = 0; i < chain.Length; ++i)
                 job.chain[i] = ReadWriteTransformHandle.Bind(animator, chain[i]);
 
             return job;
