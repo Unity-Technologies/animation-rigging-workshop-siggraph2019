@@ -50,12 +50,7 @@ namespace UnityEngine.Animations.Rigging
 
         void IAnimationJobData.SetDefaultValues()
         {
-            // Default values.
-            root = null;
-            tip = null;
-
-            rootTarget = null;
-            tipTarget = null;
+            root = tip = rootTarget = tipTarget = null;
         }
     }
 

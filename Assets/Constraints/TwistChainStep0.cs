@@ -8,6 +8,10 @@ namespace UnityEngine.Animations.Rigging
     [Unity.Burst.BurstCompile]
     public struct TwistChainStep0Job : IWeightedAnimationJob
     {
+        public NativeArray<ReadWriteTransformHandle> chain;
+        public ReadWriteTransformHandle rootTarget;
+        public ReadWriteTransformHandle tipTarget;
+
         public FloatProperty jobWeight { get; set; }
 
         public void ProcessRootMotion(AnimationStream stream) {}
@@ -18,10 +22,17 @@ namespace UnityEngine.Animations.Rigging
     [System.Serializable]
     public struct TwistChainStep0Data : IAnimationJobData
     {
-        bool IAnimationJobData.IsValid() => true;
+        public Transform root;
+        public Transform tip;
+
+        [SyncSceneToStream] public Transform rootTarget;
+        [SyncSceneToStream] public Transform tipTarget;
+
+        bool IAnimationJobData.IsValid() => !(root == null || tip == null || !tip.IsChildOf(root) || rootTarget == null || tipTarget == null);
 
         void IAnimationJobData.SetDefaultValues()
         {
+            root = tip = rootTarget = tipTarget = null;
         }
     }
 
