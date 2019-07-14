@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1448,6 +1448,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.9650738
       objectReference: {fileID: 0}
+    - target: {fileID: 2163959474932033862, guid: 665552469e0a73c49bc77e824e69137d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.12833814
+      objectReference: {fileID: 0}
     - target: {fileID: 2163959474932033880, guid: 665552469e0a73c49bc77e824e69137d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1844,11 +1849,6 @@ PrefabInstance:
       value: -0.12833814
       objectReference: {fileID: 0}
     - target: {fileID: 2163959474932033860, guid: 665552469e0a73c49bc77e824e69137d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.12833814
-      objectReference: {fileID: 0}
-    - target: {fileID: 2163959474932033862, guid: 665552469e0a73c49bc77e824e69137d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -0.12833814
