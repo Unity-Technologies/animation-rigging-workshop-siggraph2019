@@ -8,9 +8,10 @@ namespace UnityEngine.Animations.Rigging
     [Unity.Burst.BurstCompile]
     public struct TwistChainStep0Job : IWeightedAnimationJob
     {
-        public NativeArray<ReadWriteTransformHandle> chain;
         public ReadWriteTransformHandle rootTarget;
         public ReadWriteTransformHandle tipTarget;
+
+        public NativeArray<ReadWriteTransformHandle> chain;
 
         public FloatProperty jobWeight { get; set; }
 
