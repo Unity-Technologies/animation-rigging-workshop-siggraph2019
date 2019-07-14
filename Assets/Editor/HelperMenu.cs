@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class MirrorTransformWindow : EditorWindow
 {
@@ -14,7 +15,7 @@ public class MirrorTransformWindow : EditorWindow
 
     private Vector4 m_Plane = new Vector4(1f, 0f, 0f, 0f);
 
-    [MenuItem("Animation Rigging/Mirror Transforms", false, 0)]
+    [MenuItem("Animation Rigging/Utilities/Mirror Transforms", false, 0)]
     static void ShowWindow()
     {
         MirrorTransformWindow window = EditorWindow.GetWindow<MirrorTransformWindow>();
@@ -116,4 +117,76 @@ public class MirrorTransformWindow : EditorWindow
 
         return reflectionMat;
 	}
+
+    [MenuItem("Animation Rigging/Utilities/Auto-Setup TwoBoneIK from Tip Transform", false, 0)]
+    public static void TwoBoneIKAutoSetup2(MenuCommand command)
+    {
+        var selection = Selection.activeObject as GameObject;
+        if (!selection)
+        {
+            Debug.LogWarning("Please select a TwoBoneIK before running auto setup.");
+            return;
+        }
+
+        var constraint = selection.GetComponent<TwoBoneIKConstraint>() ;// command.context as UnityEngine.Animations.Rigging.TwoBoneIKConstraint;
+        var tip = constraint.data.tip ;// constraint.data.tip;
+        var animator = constraint.GetComponentInParent<Animator>()?.transform;
+
+        if (!tip)
+        {
+            Debug.LogWarning("Please provide a tip before running auto setup.");
+            return;
+        }
+
+        if (!constraint.data.mid)
+        {
+            Undo.RecordObject(constraint, "Setup mid bone for TwoBoneIK");
+            constraint.data.mid = tip.parent;
+        }
+
+        if (!constraint.data.root)
+        {
+            Undo.RecordObject(constraint, "Setup root bone for TwoBoneIK");
+            constraint.data.root = tip.parent.parent;
+        }
+
+        if (!constraint.data.target)
+        {
+            var target = constraint.transform.Find(constraint.gameObject.name + "_target");
+            if (target == null)
+            {
+                var t = new GameObject();
+                Undo.RegisterCreatedObjectUndo(t, "Created target");
+                t.name = constraint.gameObject.name + "_target";
+                t.transform.localScale = .1f * t.transform.localScale;
+                Undo.SetTransformParent(t.transform, constraint.transform, "Set new parent");
+                target = t.transform;
+            }
+            constraint.data.target = target;
+        }
+
+        if (!constraint.data.hint)
+        {
+            var hint = constraint.transform.Find(constraint.gameObject.name + "_hint");
+            if (hint == null)
+            {
+                var t = new GameObject();
+                Undo.RegisterCreatedObjectUndo(t, "Created hint");
+                t.name = constraint.gameObject.name + "_hint";
+                t.transform.localScale = .1f * t.transform.localScale;
+                Undo.SetTransformParent(t.transform, constraint.transform, "Set new parent");
+                hint = t.transform;
+            }
+            constraint.data.hint = hint;
+        }
+
+        // align target and hint to bones
+        constraint.data.target.position = constraint.data.tip.position;
+        constraint.data.target.rotation = constraint.data.tip.rotation;
+
+        constraint.data.hint.position = constraint.data.mid.position;
+        constraint.data.hint.rotation = constraint.data.mid.rotation;
+    }
+
+
 }
