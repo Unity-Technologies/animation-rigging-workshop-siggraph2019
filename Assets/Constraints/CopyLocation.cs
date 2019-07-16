@@ -9,7 +9,10 @@ public struct CopyLocationJob : IWeightedAnimationJob
 {
     public ReadWriteTransformHandle constrained;
     public ReadOnlyTransformHandle  source;
-    public float3 invert;
+
+    public BoolProperty xInvert;
+    public BoolProperty yInvert;
+    public BoolProperty zInvert;
 
     public FloatProperty jobWeight { get; set; }
 
@@ -20,9 +23,15 @@ public struct CopyLocationJob : IWeightedAnimationJob
         float w = jobWeight.Get(stream);
         if (w > 0f)
         {
+            float3 invertMask = new float3(
+                math.select(1f, -1f, xInvert.Get(stream)),
+                math.select(1f, -1f, yInvert.Get(stream)),
+                math.select(1f, -1f, zInvert.Get(stream))
+                );
+
             constrained.SetPosition(
                 stream,
-                math.lerp(constrained.GetPosition(stream), source.GetPosition(stream) * invert, w)
+                math.lerp(constrained.GetPosition(stream), source.GetPosition(stream) * invertMask, w)
                 );
         }
     }
@@ -58,7 +67,10 @@ public class CopyLocationBinder : AnimationJobBinder<CopyLocationJob, CopyLocati
         {
             constrained = ReadWriteTransformHandle.Bind(animator, data.constrainedObject),
             source = ReadOnlyTransformHandle.Bind(animator, data.sourceObject),
-            invert = new float3(data.xInvert ? -1f : 1f, data.yInvert ? -1f : 1f, data.zInvert ? -1f: 1f)
+
+            xInvert = BoolProperty.Bind(animator, component, PropertyUtils.ConstructConstraintDataPropertyName(nameof(data.xInvert))),
+            yInvert = BoolProperty.Bind(animator, component, PropertyUtils.ConstructConstraintDataPropertyName(nameof(data.yInvert))),
+            zInvert = BoolProperty.Bind(animator, component, PropertyUtils.ConstructConstraintDataPropertyName(nameof(data.zInvert)))
         };
     }
 
