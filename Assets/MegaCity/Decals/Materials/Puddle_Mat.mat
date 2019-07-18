@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Puddle_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: 28862be056129e640901d64cdea64630,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Boolean_13FD5D27: 1
+    - Vector1_3AD1788C: 5
+    - Vector1_4D3FE712: 0.29
+    - Vector1_5A617F78: 1
+    - Vector1_7066D5FE: -2.92
+    - Vector1_B7C26DC3: 0.2
+    - Vector1_FF9D0F33: 0.402
+    m_Colors:
+    - Color_51BD3F74: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 0}
+    - Color_76CD8536: {r: 1, g: 1, b: 1, a: 0}
+    - Color_F84A3C73: {r: 0, g: 0, b: 0, a: 0}
