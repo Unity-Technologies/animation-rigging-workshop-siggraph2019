@@ -1,0 +1,1 @@
+The Animation Rigging package for Unity enables users to setup rigs to procedurally control skeletal animations as a post-process. Attendees of this Studio Workshop will get hands-on experience working with this system in step-by-step tutorials. We will also show how to extend the package functionalities using C#.
