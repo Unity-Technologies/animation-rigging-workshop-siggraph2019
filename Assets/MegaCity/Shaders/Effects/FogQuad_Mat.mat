@@ -30,6 +30,6 @@ Material:
     - Vector1_BAF0AFD: -16.1
     - Vector1_EFA741B5: 40
     m_Colors:
-    - Color_1463F17: {r: 0.35686275, g: 0.30980393, b: 0.26666668, a: 1}
+    - Color_1463F17: {r: 0.30980393, g: 0.26666668, b: 0.21960786, a: 1}
     - Color_64D543A5: {r: 1, g: 0, b: 0, a: 1}
     - Vector2_8EB42B8: {r: 0.1, g: 0.1, b: 0, a: 0}
