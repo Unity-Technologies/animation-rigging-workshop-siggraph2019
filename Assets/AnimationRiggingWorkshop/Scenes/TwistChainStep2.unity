@@ -1731,7 +1731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1799980151}
-  - component: {fileID: 1799980152}
+  - component: {fileID: 1799980153}
   m_Layer: 0
   m_Name: Twist
   m_TagString: Untagged
@@ -1755,7 +1755,7 @@ Transform:
   m_Father: {fileID: 404418314}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1799980152
+--- !u!114 &1799980153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1764,7 +1764,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1799980150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4fcd34ca23da4161af706723275104f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b3181e1d19db44d2ac12062bbe9637a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 1
@@ -1773,30 +1773,6 @@ MonoBehaviour:
     tip: {fileID: 184886312}
     rootTarget: {fileID: 854090494}
     tipTarget: {fileID: 212552606}
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
 --- !u!1 &1849984684
 GameObject:
   m_ObjectHideFlags: 0
