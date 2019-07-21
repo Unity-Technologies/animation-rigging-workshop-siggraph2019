@@ -13,6 +13,8 @@ namespace UnityEngine.Animations.Rigging
 
         public NativeArray<ReadWriteTransformHandle> chain;
 
+        public NativeArray<float> steps;
+
         public FloatProperty jobWeight { get; set; }
 
         public void ProcessRootMotion(AnimationStream stream) {}

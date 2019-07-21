@@ -6,7 +6,7 @@ namespace UnityEngine.Animations.Rigging
     using Experimental.Animations;
 
     [Unity.Burst.BurstCompile]
-    public struct TwistChainStep1Job : IWeightedAnimationJob
+    public struct TwistChainStep2Job : IWeightedAnimationJob
     {
         public ReadWriteTransformHandle rootTarget;
         public ReadWriteTransformHandle tipTarget;
@@ -21,19 +21,26 @@ namespace UnityEngine.Animations.Rigging
 
         public void ProcessAnimation(AnimationStream stream)
         {
-            // 1. Retrieve root and tip rotation.
-            // ...
+            // Retrieve root and tip rotation.
+            Quaternion rootRotation = rootTarget.GetRotation(stream);
+            Quaternion tipRotation = tipTarget.GetRotation(stream);
 
-            // 2. Interpolate rotation on chain.
-            // ...
+            float mainWeight = jobWeight.Get(stream);
 
-            // 3. Update position of tip handle for easier visualization.
-            // ...
+            // Interpolate rotation on chain.
+            for (int i = 0; i < chain.Length; ++i)
+            {
+                chain[i].SetRotation(stream, Quaternion.Lerp(chain[i].GetRotation(stream), Quaternion.Lerp(rootRotation, tipRotation, steps[i]), mainWeight));
+            }
+
+            // Update position of tip handle for easier visualization.
+            rootTarget.SetPosition(stream, chain[0].GetPosition(stream));
+            tipTarget.SetPosition(stream, chain[chain.Length - 1].GetPosition(stream));
         }
     }
 
     [System.Serializable]
-    public struct TwistChainStep1Data : IAnimationJobData
+    public struct TwistChainStep2Data : IAnimationJobData
     {
         public Transform root;
         public Transform tip;
@@ -49,9 +56,9 @@ namespace UnityEngine.Animations.Rigging
         }
     }
 
-    public class TwistChainStep1JobBinder : AnimationJobBinder<TwistChainStep1Job, TwistChainStep1Data>
+    public class TwistChainStep2JobBinder : AnimationJobBinder<TwistChainStep2Job, TwistChainStep2Data>
     {
-        public override TwistChainStep1Job Create(Animator animator, ref TwistChainStep1Data data, Component component)
+        public override TwistChainStep2Job Create(Animator animator, ref TwistChainStep2Data data, Component component)
         {
             // Retrieve chain in-between root and tip transforms.
             Transform[] chain = ConstraintsUtils.ExtractChain(data.root, data.tip);
@@ -60,7 +67,7 @@ namespace UnityEngine.Animations.Rigging
             float[] steps = ConstraintsUtils.ExtractSteps(chain);
 
             // Build Job.
-            var job = new TwistChainStep1Job();
+            var job = new TwistChainStep2Job();
             job.chain = new NativeArray<ReadWriteTransformHandle>(chain.Length, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             job.steps = new NativeArray<float>(chain.Length, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
             job.rootTarget = ReadWriteTransformHandle.Bind(animator, data.rootTarget);
@@ -76,20 +83,21 @@ namespace UnityEngine.Animations.Rigging
             return job;
         }
 
-        public override void Destroy(TwistChainStep1Job job)
+        public override void Destroy(TwistChainStep2Job job)
         {
+            job.chain.Dispose();
         }
 
-        public override void Update(TwistChainStep1Job job, ref TwistChainStep1Data data)
+        public override void Update(TwistChainStep2Job job, ref TwistChainStep2Data data)
         {
         }
     }
 
-    [DisallowMultipleComponent, AddComponentMenu("SIGGRAPH 2019/Twist Chain Step 1")]
-    public class TwistChainStep1 : RigConstraint<
-        TwistChainStep1Job,
-        TwistChainStep1Data,
-        TwistChainStep1JobBinder
+    [DisallowMultipleComponent, AddComponentMenu("SIGGRAPH 2019/Twist Chain Step 2")]
+    public class TwistChainStep2 : RigConstraint<
+        TwistChainStep2Job,
+        TwistChainStep2Data,
+        TwistChainStep2JobBinder
         >
     {
     }

@@ -68,6 +68,9 @@ namespace UnityEngine.Animations.Rigging
             // Retrieve chain in-between root and tip transforms.
             Transform[] chain = ConstraintsUtils.ExtractChain(data.root, data.tip);
 
+            // Extract steps from chain.
+            float[] steps = ConstraintsUtils.ExtractSteps(chain);
+
             // Build Job.
             var job = new TwistChainJob();
             job.chain = new NativeArray<ReadWriteTransformHandle>(chain.Length, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
@@ -76,17 +79,10 @@ namespace UnityEngine.Animations.Rigging
             job.rootTarget = ReadWriteTransformHandle.Bind(animator, data.rootTarget);
             job.tipTarget = ReadWriteTransformHandle.Bind(animator, data.tipTarget);
 
+            // Set values in NativeArray.
             for (int i = 0; i < chain.Length; ++i)
             {
                 job.chain[i] = ReadWriteTransformHandle.Bind(animator, chain[i]);
-            }
-
-            // Extract steps from chain.
-            float[] steps = ConstraintsUtils.ExtractSteps(chain);
-
-            // Update weights based on curve.
-            for (int i = 0; i < steps.Length; ++i)
-            {
                 job.steps[i] = steps[i];
                 job.weights[i] = Mathf.Clamp01(data.curve.Evaluate(steps[i]));
             }
@@ -111,7 +107,7 @@ namespace UnityEngine.Animations.Rigging
         }
     }
 
-    [DisallowMultipleComponent, AddComponentMenu("SIGGRAPH 2019/Twist Chain")]
+    [DisallowMultipleComponent, AddComponentMenu("SIGGRAPH 2019/Twist Chain Final")]
     public class TwistChain : RigConstraint<
         TwistChainJob,
         TwistChainData,
