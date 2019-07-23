@@ -86,6 +86,7 @@ namespace UnityEngine.Animations.Rigging
         public override void Destroy(TwistChainStep2Job job)
         {
             job.chain.Dispose();
+            job.steps.Dispose();
         }
 
         public override void Update(TwistChainStep2Job job, ref TwistChainStep2Data data)
