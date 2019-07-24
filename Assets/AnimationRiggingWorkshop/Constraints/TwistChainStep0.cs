@@ -19,7 +19,20 @@ namespace UnityEngine.Animations.Rigging
 
         public void ProcessRootMotion(AnimationStream stream) {}
 
-        public void ProcessAnimation(AnimationStream stream) {}
+        public void ProcessAnimation(AnimationStream stream)
+        {
+            // 1. Retrieve root and tip rotation.
+            // q1 <- ROOT_TARGET_ROTATION
+            // q2 <- TIP_TARGET_ROTATION
+
+            // 2. Interpolate rotation on chain.
+            // FOREACH(transform in chain)
+            //     transform.rotation <- LERP(transform.rotation, LERP(q1, q2, w), jobWeight)
+
+            // 3. Update position of tip handle for easier visualization.
+            // ROOT_TARGET_POSITION <- ROOT_CHAIN_POSITION
+            // TIP_TARGET_POSITION <- TIP_CHAIN_POSITION
+        }
     }
 
     [System.Serializable]
@@ -43,8 +56,19 @@ namespace UnityEngine.Animations.Rigging
     {
         public override TwistChainStep0Job Create(Animator animator, ref TwistChainStep0Data data, Component component)
         {
-            // Build Job.
+            // 1. Retrieve chain in-between root and tip transforms.
+            // ...
+
+            // 2. Extract steps from chain.
+            // ...
+
+            // 3. Build Job.
             var job = new TwistChainStep0Job();
+            // ...
+
+            // 4. Set values in NativeArray.
+            // ...
+
             return job;
         }
 
