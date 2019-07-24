@@ -61,6 +61,8 @@ public class CopyLocationStep0Binder : AnimationJobBinder<CopyLocationStep0Job, 
         {
             constrained = ReadWriteTransformHandle.Bind(animator, data.constrainedObject),
             source = ReadOnlyTransformHandle.Bind(animator, data.sourceObject)
+
+            // TODO : Update binder code to add our new toggles
         };
     }
 
