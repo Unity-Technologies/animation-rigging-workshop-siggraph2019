@@ -600,9 +600,10 @@ MonoBehaviour:
   m_Data:
     constrainedObject: {fileID: 1146186026}
     sourceObject: {fileID: 846542677}
-    xInvert: 1
-    yInvert: 0
-    zInvert: 0
+    invert:
+      x: 1
+      y: 0
+      z: 0
 --- !u!114 &849648628
 MonoBehaviour:
   m_ObjectHideFlags: 0
