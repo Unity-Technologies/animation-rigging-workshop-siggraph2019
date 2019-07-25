@@ -40,12 +40,14 @@ public class TwoBoneIKAutoSetup : Editor
         {
             Undo.RecordObject(constraint, "Setup mid bone for TwoBoneIK");
             constraint.data.mid = tip.parent;
+            if (PrefabUtility.IsPartOfPrefabInstance(constraint)) EditorUtility.SetDirty(constraint);
         }
 
         if (!constraint.data.root)
         {
             Undo.RecordObject(constraint, "Setup root bone for TwoBoneIK");
             constraint.data.root = tip.parent.parent;
+            if (PrefabUtility.IsPartOfPrefabInstance(constraint)) EditorUtility.SetDirty(constraint);
         }
 
         if (!constraint.data.target)
@@ -58,6 +60,7 @@ public class TwoBoneIKAutoSetup : Editor
                 t.name = constraint.gameObject.name + "_target";
                 Undo.SetTransformParent(t.transform, constraint.transform, "Set new parent");
                 target = t.transform;
+                if (PrefabUtility.IsPartOfPrefabInstance(constraint)) EditorUtility.SetDirty(constraint);
             }
             constraint.data.target = target;
         }
@@ -74,6 +77,7 @@ public class TwoBoneIKAutoSetup : Editor
                 hint = t.transform;
             }
             constraint.data.hint = hint;
+            if (PrefabUtility.IsPartOfPrefabInstance(constraint)) EditorUtility.SetDirty(constraint);
         }
 
         // align target and hint to bones

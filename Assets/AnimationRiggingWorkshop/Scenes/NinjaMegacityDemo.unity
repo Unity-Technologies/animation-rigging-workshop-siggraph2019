@@ -5178,8 +5178,6 @@ MonoBehaviour:
       m_Item7:
         transform: {fileID: 0}
         weight: 0
-    m_PositionOffset: {x: 0, y: 0, z: 0}
-    m_RotationOffset: {x: 0, y: 0, z: 0, w: 1}
     m_ConstrainedPositionAxes:
       x: 1
       y: 1
@@ -5190,7 +5188,6 @@ MonoBehaviour:
       z: 1
     m_MaintainPositionOffset: 0
     m_MaintainRotationOffset: 0
-    m_SoloMode: 0
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 1
 --- !u!1001 &386096663
@@ -14456,7 +14453,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 772315689, guid: 5fd80ff0c777aee40a0461cf5165b893, type: 3}
       propertyPath: m_Effectors.Array.size
-      value: 48
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 772315689, guid: 5fd80ff0c777aee40a0461cf5165b893, type: 3}
+      propertyPath: m_Effectors.Array.data[48].m_Transform
+      value: 
+      objectReference: {fileID: 1732088091}
+    - target: {fileID: 772315689, guid: 5fd80ff0c777aee40a0461cf5165b893, type: 3}
+      propertyPath: m_Effectors.Array.data[48].m_Style.shape
+      value: 
+      objectReference: {fileID: 4300000, guid: e050c2b16fe384bd994474655a4b4968, type: 2}
+    - target: {fileID: 772315689, guid: 5fd80ff0c777aee40a0461cf5165b893, type: 3}
+      propertyPath: m_Effectors.Array.data[48].m_Style.color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 772315689, guid: 5fd80ff0c777aee40a0461cf5165b893, type: 3}
+      propertyPath: m_Effectors.Array.data[48].m_Style.color.a
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 772315689, guid: 5fd80ff0c777aee40a0461cf5165b893, type: 3}
+      propertyPath: m_Effectors.Array.data[48].m_Style.size
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 772315689, guid: 5fd80ff0c777aee40a0461cf5165b893, type: 3}
+      propertyPath: m_Effectors.Array.data[48].m_Visible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 772315689, guid: 5fd80ff0c777aee40a0461cf5165b893, type: 3}
+      propertyPath: m_Effectors.Array.data[48].m_Style.color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd80ff0c777aee40a0461cf5165b893, type: 3}
@@ -14970,8 +14995,6 @@ MonoBehaviour:
       m_Item7:
         transform: {fileID: 0}
         weight: 0
-    m_PositionOffset: {x: 0, y: 0, z: 0}
-    m_RotationOffset: {x: 0, y: 0, z: 0, w: 1}
     m_ConstrainedPositionAxes:
       x: 1
       y: 1
@@ -14982,7 +15005,6 @@ MonoBehaviour:
       z: 1
     m_MaintainPositionOffset: 0
     m_MaintainRotationOffset: 0
-    m_SoloMode: 0
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 1
 --- !u!1001 &1296538010
