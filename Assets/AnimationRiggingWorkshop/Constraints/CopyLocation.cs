@@ -10,9 +10,7 @@ public struct CopyLocationJob : IWeightedAnimationJob
     public ReadWriteTransformHandle constrained;
     public ReadOnlyTransformHandle  source;
 
-    public BoolProperty xInvert;
-    public BoolProperty yInvert;
-    public BoolProperty zInvert;
+    public Vector3BoolProperty invert;
 
     public FloatProperty jobWeight { get; set; }
 
@@ -23,15 +21,16 @@ public struct CopyLocationJob : IWeightedAnimationJob
         float w = jobWeight.Get(stream);
         if (w > 0f)
         {
-            float3 invertMask = new float3(
-                math.select(1f, -1f, xInvert.Get(stream)),
-                math.select(1f, -1f, yInvert.Get(stream)),
-                math.select(1f, -1f, zInvert.Get(stream))
+            var tmp = invert.Get(stream);
+            float3 mask = new float3(
+                math.select(1f, -1f, tmp.x),
+                math.select(1f, -1f, tmp.y),
+                math.select(1f, -1f, tmp.z)
                 );
 
             constrained.SetPosition(
                 stream,
-                math.lerp(constrained.GetPosition(stream), source.GetPosition(stream) * invertMask, w)
+                math.lerp(constrained.GetPosition(stream), source.GetPosition(stream) * mask, w)
                 );
         }
     }
@@ -42,9 +41,7 @@ public struct CopyLocationData : IAnimationJobData
 {
     public Transform constrainedObject;
     [SyncSceneToStream] public Transform sourceObject;
-    [SyncSceneToStream] public bool xInvert;
-    [SyncSceneToStream] public bool yInvert;
-    [SyncSceneToStream] public bool zInvert;
+    [SyncSceneToStream] public Vector3Bool invert;
 
     public bool IsValid()
     {
@@ -55,7 +52,7 @@ public struct CopyLocationData : IAnimationJobData
     {
         constrainedObject = null;
         sourceObject = null;
-        xInvert = yInvert = zInvert = false;
+        invert = new Vector3Bool(false);
     }
 }
 
@@ -67,10 +64,7 @@ public class CopyLocationBinder : AnimationJobBinder<CopyLocationJob, CopyLocati
         {
             constrained = ReadWriteTransformHandle.Bind(animator, data.constrainedObject),
             source = ReadOnlyTransformHandle.Bind(animator, data.sourceObject),
-
-            xInvert = BoolProperty.Bind(animator, component, PropertyUtils.ConstructConstraintDataPropertyName(nameof(data.xInvert))),
-            yInvert = BoolProperty.Bind(animator, component, PropertyUtils.ConstructConstraintDataPropertyName(nameof(data.yInvert))),
-            zInvert = BoolProperty.Bind(animator, component, PropertyUtils.ConstructConstraintDataPropertyName(nameof(data.zInvert)))
+            invert = Vector3BoolProperty.Bind(animator, component, PropertyUtils.ConstructConstraintDataPropertyName(nameof(data.invert)))
         };
     }
 
