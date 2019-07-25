@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.unity.animation.rigging": "0.2.2-preview",
+    "com.unity.animation.rigging": "0.2.3-preview",
     "com.unity.burst": "1.1.1",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ext.nunit": "1.0.0",
