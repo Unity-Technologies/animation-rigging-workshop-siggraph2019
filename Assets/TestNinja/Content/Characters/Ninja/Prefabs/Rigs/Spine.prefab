@@ -73,8 +73,6 @@ MonoBehaviour:
       m_Item7:
         transform: {fileID: 0}
         weight: 0
-    m_PositionOffset: {x: 0, y: 0, z: 0}
-    m_RotationOffset: {x: 0, y: 0, z: 0, w: 1}
     m_ConstrainedPositionAxes:
       x: 1
       y: 1
@@ -85,7 +83,6 @@ MonoBehaviour:
       z: 1
     m_MaintainPositionOffset: 0
     m_MaintainRotationOffset: 0
-    m_SoloMode: 0
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 0
 --- !u!114 &5514015373702760462
