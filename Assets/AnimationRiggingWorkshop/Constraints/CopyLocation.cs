@@ -10,6 +10,8 @@ public struct CopyLocationJob : IWeightedAnimationJob
     public ReadWriteTransformHandle constrained;
     public ReadOnlyTransformHandle  source;
 
+    // Use Vector3BoolProperty to read in the axis booleans from
+    // the AnimationStream
     public Vector3BoolProperty invert;
 
     public FloatProperty jobWeight { get; set; }
@@ -22,7 +24,7 @@ public struct CopyLocationJob : IWeightedAnimationJob
         if (w > 0f)
         {
             var tmp = invert.Get(stream);
-            float3 mask = new float3(
+            float3 invertMask = new float3(
                 math.select(1f, -1f, tmp.x),
                 math.select(1f, -1f, tmp.y),
                 math.select(1f, -1f, tmp.z)
@@ -30,7 +32,7 @@ public struct CopyLocationJob : IWeightedAnimationJob
 
             constrained.SetPosition(
                 stream,
-                math.lerp(constrained.GetPosition(stream), source.GetPosition(stream) * mask, w)
+                math.lerp(constrained.GetPosition(stream), source.GetPosition(stream) * invertMask, w)
                 );
         }
     }
@@ -41,6 +43,10 @@ public struct CopyLocationData : IAnimationJobData
 {
     public Transform constrainedObject;
     [SyncSceneToStream] public Transform sourceObject;
+
+    // Use SyncSceneToStream on Vector3Bool in order to add these
+    // properties to the AnimationStream and for them to be
+    // updated by the intial SyncSceneToStream job defined by the RigBuilder.
     [SyncSceneToStream] public Vector3Bool invert;
 
     public bool IsValid()
@@ -64,6 +70,8 @@ public class CopyLocationBinder : AnimationJobBinder<CopyLocationJob, CopyLocati
         {
             constrained = ReadWriteTransformHandle.Bind(animator, data.constrainedObject),
             source = ReadOnlyTransformHandle.Bind(animator, data.sourceObject),
+
+            // Bind data.invert to job.invert so values can be resolved from the AnimationStream
             invert = Vector3BoolProperty.Bind(animator, component, PropertyUtils.ConstructConstraintDataPropertyName(nameof(data.invert)))
         };
     }
