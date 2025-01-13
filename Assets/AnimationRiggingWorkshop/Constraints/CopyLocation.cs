@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-using UnityEngine.Experimental.Animations;
+using UnityEngine.Animations;
 using Unity.Burst;
 using Unity.Mathematics;
 
@@ -72,7 +72,7 @@ public class CopyLocationBinder : AnimationJobBinder<CopyLocationJob, CopyLocati
             source = ReadOnlyTransformHandle.Bind(animator, data.sourceObject),
 
             // Bind data.invert to job.invert so values can be resolved from the AnimationStream
-            invert = Vector3BoolProperty.Bind(animator, component, PropertyUtils.ConstructConstraintDataPropertyName(nameof(data.invert)))
+            invert = Vector3BoolProperty.Bind(animator, component, UnityEngine.Animations.Rigging.ConstraintsUtils.ConstructConstraintDataPropertyName(nameof(data.invert)))
         };
     }
 

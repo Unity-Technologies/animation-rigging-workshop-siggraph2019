@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-using UnityEngine.Experimental.Animations;
+using UnityEngine.Animations;
 using Unity.Burst;
 using Unity.Mathematics;
 
@@ -9,7 +9,7 @@ public struct HelloWorldJob : IWeightedAnimationJob
 {
     public ReadWriteTransformHandle constrained;
     public ReadOnlyTransformHandle  source;
-    
+
     public FloatProperty jobWeight { get; set; }
 
     public void ProcessRootMotion(AnimationStream stream) { }
