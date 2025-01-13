@@ -1,21 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3232214200417576424
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: graphs_Ninja_Leather 1
   m_Shader: {fileID: 4800000, guid: 2717cfe7bc528054eb473c74b723c29b, type: 3}
-  m_ShaderKeywords: 
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -24,6 +42,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_21AED71F_Texture:
+        m_Texture: {fileID: 2800000, guid: 99f051344e3e9cd45a501779934e6163, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_24657995760a458da4d64e9c2a4b9acf_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 99f051344e3e9cd45a501779934e6163, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -37,6 +59,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_5C2C953_Texture_1:
         m_Texture: {fileID: 2800000, guid: fe86390306dbf8d49a6b34599f6e8aed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_61f964c04c92ea82b4b484ce7ad041bb_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d6ac4720774bde74e8cd49fe44030c04, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_62E4DE6A_Texture:
@@ -67,6 +93,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: d6ac4720774bde74e8cd49fe44030c04, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a8060485031d738780b121d93de3d6a6_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: fe86390306dbf8d49a6b34599f6e8aed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_bb0ae3c341f64985aeaebe66f34f09e1_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: b4545adf21a8cc5439c95807334e9a34, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_1BA683CC_Out:
         m_Texture: {fileID: 2800000, guid: c8d62f9aea861a248855d4adb65d2c76, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -77,6 +111,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_71379255_Out:
         m_Texture: {fileID: 2800000, guid: 03c39246d90bc4646b3793edf6b1d78a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_9e14bdb5a96c8d85871eb5eee2060c29_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: c8d62f9aea861a248855d4adb65d2c76, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_A22F3F8F_Out:
@@ -91,7 +129,26 @@ Material:
         m_Texture: {fileID: 2800000, guid: c8d62f9aea861a248855d4adb65d2c76, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
+    - _Texture2DAsset_e05f702c5206798dbd78e67a97004113_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 03c39246d90bc4646b3793edf6b1d78a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
     - Color_3E382A72: {r: 0.4627451, g: 0.4117647, b: 0.31764707, a: 0}
     - Color_602C9B69: {r: 0.09019608, g: 0.107985266, b: 0.18039216, a: 0}
@@ -101,3 +158,5 @@ Material:
     - Color_BDC90C30: {r: 0.4627451, g: 0.41159055, b: 0.31764707, a: 0}
     - Color_BF065094: {r: 0.31764707, g: 0.32941177, b: 0.46274513, a: 0}
     - Color_E44ECA60: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

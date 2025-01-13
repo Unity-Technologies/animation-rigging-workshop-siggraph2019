@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-using UnityEngine.Experimental.Animations;
+using UnityEngine.Animations;
 using Unity.Burst;
 using Unity.Mathematics;
 
