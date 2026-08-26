@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 9
+  version: 10
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Pipes_A_White
-  m_Shader: {fileID: -6465566751694194690, guid: f96385200ca2c3248aa7ab5d13baf8c7,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f96385200ca2c3248aa7ab5d13baf8c7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -277,8 +276,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffusionProfileAsset: {r: -4.385658e+12, g: 2.843245e+22, b: -2.5896093e+14,
-        a: 2.2807373e-20}
+    - _DiffusionProfileAsset: {r: -4.385658e+12, g: 2.843245e+22, b: -2.5896093e+14, a: 2.2807373e-20}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}

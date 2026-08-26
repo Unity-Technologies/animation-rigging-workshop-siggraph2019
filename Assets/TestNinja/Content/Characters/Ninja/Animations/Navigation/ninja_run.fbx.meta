@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 5a4121531c3abbb4bb4ebf81defe4463
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 24600
   internalIDToNameTable:
   - first:
       1: 100000
@@ -557,18 +557,18 @@ ModelImporter:
     second: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
+    searchTexturesGlobally: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: Root
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -620,26 +620,42 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    preBakeConvexCollisionMesh: 0
+    preBakeTriangleCollisionMesh: 0
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    importUVs: -1
+    importVertexColors: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -648,9 +664,9 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+    calculateBlendshapeNormalsDeltaFromImportedNormals: 1
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -693,8 +709,7 @@ ModelImporter:
     - name: LeftToesEnd
       parentName: LeftToes
       position: {x: -0.05404898, y: 1.11022296e-17, z: 0}
-      rotation: {x: 0.000000012668228, y: -0.000000012972046, z: 0.00000004316617,
-        w: 1}
+      rotation: {x: 0.000000012668228, y: -0.000000012972046, z: 0.00000004316617, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LeftKnee
       parentName: LeftLowerLeg
@@ -739,8 +754,7 @@ ModelImporter:
     - name: RightToesEnd
       parentName: RightToes
       position: {x: 0.054049008, y: -0.000000002384186, z: -3.552714e-17}
-      rotation: {x: -0.000000010639032, y: 0.00000001346503, z: 0.00000020412446,
-        w: 1}
+      rotation: {x: -0.000000010639032, y: 0.00000001346503, z: 0.00000020412446, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: joint1
       parentName: RightLowerLeg
@@ -1120,13 +1134,18 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: Root
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
